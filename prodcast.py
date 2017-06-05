@@ -5,20 +5,19 @@ import os
 app = Flask(__name__)
 mail_client = postal.Client()
 
-
 # The main episode data store
 episodes = {
     'dave-burson-hotels-combined': {
         'title': 'Dave Burson, Hotels Combined',
-        'soundcloud-url': 'https://soundcloud.com/soundcloudsixty/kevingarrett',
-        'soundcloud': '276644682',
+        'soundcloud-url': 'https://soundcloud.com/intercom/daniel-burka-design-partner-at',
+        'soundcloud': '296867798',
         'number': 1, 
         'url': 'dave-burson-hotels-combined'
     }, 
     'carlos-pacheco-escrow': {
         'title': 'Carlos Pacheco, Escrow.com',
-        'soundcloud-url': 'https://soundcloud.com/soundcloudsixty/mickjenkins',
-        'soundcloud': '276644683',
+        'soundcloud-url': 'https://soundcloud.com/intercom/amy-thibodeau-content-strategy',
+        'soundcloud': '325557698',
         'number': 2,
         'url': 'carlos-pacheco-escrow'
     }
@@ -42,8 +41,8 @@ def past_episodes():
 def view_episode(name):
     if name not in episodes:
         return abort(404)
-    if not os.path.isfile('templates/episodes/%s.html'):
-        return abort(404)
+    # if not os.path.isfile('templates/episodes/%s.html'):
+    #     return abort(404)
     return render_template('episodes/%s.html' % name, episode=episodes[name], title=episodes[name]['title'])
 
 

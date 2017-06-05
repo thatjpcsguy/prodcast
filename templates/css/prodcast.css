@@ -63,7 +63,7 @@ html {
 .latest {
 	width: 800px;
 	margin: 0 auto;
-	padding-bottom: 60px;
+	padding-bottom: 20px;
 }
 
 .latest h3 {
@@ -124,6 +124,8 @@ html {
 	margin-top: 20px;
 	margin-bottom: 40px;
 	width: 800px;
+	height: 200px;
+	overflow: none;
 }
 
 .player .waveform {
@@ -132,10 +134,11 @@ html {
 }
 
 .player .play-pause {
-	display: inline-block;
+	/*display: inline-block;*/
 	height: 50px;
 	padding-bottom: 40px;
 	width: 50px;
+	display: none;
 }
 
 .player .play-pause.playing {
@@ -144,10 +147,25 @@ html {
 
 .player .time {
 	text-align: right;
+	display: none;
 }
 
 .player button {
 	display: inline-block;
+}
+
+.player .loading {
+	position: relative;
+	display: inline-block;
+	width: 740px;
+	height: 80px;
+	top: -20px;
+}
+
+.player .loading .loading-inner {
+	height: 10px;
+	background-color: #264348; /* INDIGO COLOUR http://bootflat.github.io/color-picker.html */
+	width: 0%;
 }
 
 @media (max-width: 840px) {
@@ -157,7 +175,6 @@ html {
 		text-align: center;
 	}
 	.player .play-pause {
-		display: inline-block;
 		position: relative;
 		top: 90px;
 		padding-bottom: 0;
@@ -171,6 +188,10 @@ html {
 		background-color: white;
 	}
 	.player .waveform {
+		display: inline-block;
+		width: 100%;
+	}
+	.player .loading {
 		display: inline-block;
 		width: 100%;
 	}

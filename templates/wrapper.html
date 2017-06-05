@@ -72,14 +72,25 @@
 		<img class="play-pause" src="/static/img/pause-play-button.svg" onclick="window.wavesurfer{{number}}.playPause()" />
 		<div class="waveform"></div>
 		<div class="time"><span class="time-current">00:00</span> / <span class="time-total">00:00</span></div>
+		<div class="loading">
+			<div class="loading-inner"></div>
+		</div>
 		<!-- Custom Player JS #sc{{number}} --> 
 		<script type="text/javascript">
 		document.addEventListener("DOMContentLoaded", function(event) { 
   			window.wavesurfer{{number}} = WaveSurfer.create({container: '#sc{{number}} .waveform', waveColor: '#ABB7B7', progressColor: '#264348', cursorWidth: 0, barWidth: '4'}); 
 			window.wavesurfer{{number}}.load('https://api.soundcloud.com/tracks/{{scid}}/stream?consumer_key=htuiRd1JP11Ww0X72T1C3g');
+
+			window.wavesurfer{{number}}.on('loading', function (percent) {
+				var player = document.getElementById('sc{{number}}');
+				player.getElementsByClassName('loading-inner')[0].style.width = percent + '%'
+			});
 			
 			window.wavesurfer{{number}}.on('ready', function () {
 				var player = document.getElementById('sc{{number}}');
+				player.getElementsByClassName('loading')[0].style.display = 'none';
+				player.getElementsByClassName('play-pause')[0].style.display = 'inline-block';
+				player.getElementsByClassName('time')[0].style.display = 'block';
 				player.getElementsByClassName('time-total')[0].innerHTML = moment().startOf('day').seconds(window.wavesurfer{{number}}.getDuration()).format('mm:ss');
 
 				player.getElementsByClassName('time-current')[0].innerHTML = moment().startOf('day').seconds(window.wavesurfer{{number}}.getCurrentTime()).format('mm:ss');

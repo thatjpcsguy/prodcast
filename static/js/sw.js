@@ -85,9 +85,9 @@ workboxSW.router.registerRoute(
 );
 
 workboxSW.router.registerRoute(
-  'https://api.soundcloud.com/tracks/(.*)',
+  'https://cf-media.sndcdn.com/(.*)',
   workboxSW.strategies.cacheFirst({
-    cacheName: 'tracks',
+    cacheName: 'tracks-media',
     cacheExpiration: {
       maxEntries: 100,
       maxAgeSeconds: 7 * 24 * 60 * 60,
@@ -97,5 +97,16 @@ workboxSW.router.registerRoute(
 );
 
 
+workboxSW.router.registerRoute(
+  'https://api.soundcloud.com/tracks/(.*)',
+  workboxSW.strategies.cacheFirst({
+    cacheName: 'tracks-api',
+    cacheExpiration: {
+      maxEntries: 100,
+      maxAgeSeconds: 7 * 24 * 60 * 60,
+    },
+    cacheableResponse: {statuses: [0, 200]},
+  })
+);
 
 
