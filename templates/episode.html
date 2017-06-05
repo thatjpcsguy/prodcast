@@ -1,8 +1,7 @@
 {% extends 'wrapper.html' %}
-{% include 'navigation.html' %}
-
-{% from 'wrapper.html' import make_player %}
 {% block content %}
+{% include 'navigation.html' %}
+{% from 'wrapper.html' import make_player %}
 <div class="container">
 	<div class="latest">
 		{{ make_player(episode.title, episode.soundcloud, episode.url, episode.number) }}

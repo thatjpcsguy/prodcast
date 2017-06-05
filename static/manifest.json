@@ -8,7 +8,7 @@
       "sizes": "1200x1200"
     }
   ],
-  "start_url": "https://www.theprodcast.com.au/?utm_source=homescreen",
+  "start_url": "/?utm_source=homescreen",
   "background_color": "#ABB7B7",
   "theme_color": "#ABB7B7",
   "display": "standalone"

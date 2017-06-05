@@ -1,7 +1,7 @@
 {% extends 'wrapper.html' %}
+{% block content %}
 {% include 'navigation.html' %}
 {% from 'wrapper.html' import make_player %}
-{% block content %}
 <div class="container">
 	{% for episode in episodes %}
         <div class="latest">
@@ -9,5 +9,4 @@
 		</div>
 	{% endfor %}
 </div>
-
 {% endblock %}
