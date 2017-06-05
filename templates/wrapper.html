@@ -91,7 +91,7 @@
 			window.ws{{episode.number}} = false;
   			window.wavesurfer{{episode.number}} = WaveSurfer.create({container: '#sc{{episode.number}} .waveform', waveColor: '#ABB7B7', progressColor: '#264348', cursorWidth: 0, barWidth: '4'});
 
-			window.wavesurfer{{episode.number}}.load('/static/mp3/sound_02.mp3')
+			window.wavesurfer{{episode.number}}.load('/static/mp3/sound.mp3')
 
 			window.wavesurfer{{episode.number}}.on('loading', function (percent) {
 				var player = document.getElementById('sc{{episode.number}}');
