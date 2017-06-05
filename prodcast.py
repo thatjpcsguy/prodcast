@@ -42,7 +42,7 @@ def past_episodes():
 def view_episode(name):
     if name not in episodes:
         return abort(404)
-    if not os.path.isfile('episodes/%s.html'):
+    if not os.path.isfile('templates/episodes/%s.html'):
         return abort(404)
     return render_template('episodes/%s.html' % name, episode=episodes[name], title=episodes[name]['title'])
 
