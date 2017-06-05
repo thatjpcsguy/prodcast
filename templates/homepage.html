@@ -11,10 +11,10 @@
 	</div>
 	<div class="container">
 		<div class="about">
-			<p>The Prodcast is a new podcast about all things product management, tech, startups, and whatever else takes our fancy. Listen to the <a href="/episodes/{{latest}}">latest episode</a> below. Or dont, whatever.</p>
+			<p>The Prodcast is a new podcast about all things product management, tech, startups, and whatever else takes our fancy. Listen to the <a href="/episodes/{{episode}}">latest episode</a> below. Or dont, whatever.</p>
 		</div>
 		<div class="latest">
-			{{ make_player(episodes[latest].title, episodes[latest].soundcloud, latest, episodes[latest].number) }}
+			{{ make_player(episodes[episode]) }}
 
 			<h3><a href="/episodes">See Past Episodes &rarr;</a></h3>
 		</div>

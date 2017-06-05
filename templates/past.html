@@ -5,7 +5,7 @@
 <div class="container">
 	{% for episode in episodes %}
         <div class="latest">
-			{{ make_player(episodes[episode].title, episodes[episode].soundcloud, episode, episodes[episode].number) }}
+			{{ make_player(episodes[episode]) }}
 		</div>
 	{% endfor %}
 </div>

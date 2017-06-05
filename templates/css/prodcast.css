@@ -141,6 +141,10 @@ html {
 	display: none;
 }
 
+.player .play-pause.real {
+	display: none;
+}
+
 .player .play-pause.playing {
 	opacity: 0.8;
 }
@@ -176,7 +180,7 @@ html {
 	}
 	.player .play-pause {
 		position: relative;
-		top: 90px;
+		top: 94px;
 		padding-bottom: 0;
 		padding-top: 0;
 		z-index: 1000;

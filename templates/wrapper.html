@@ -7,6 +7,7 @@
 	<meta property="og:title" content="The Prodcast | {{title}}" />
 	<meta property="og:type" content="website" />
 	<meta property="og:image" content="https://www.theprodcast.com.au/static/img/og.png" />
+	<meta property="og:url" content="" />
 
 	<meta name="theme-color" content="#ABB7B7">
 	<meta name="apple-mobile-web-app-capable" content="yes">
@@ -66,45 +67,61 @@
 
 
 
-{% macro make_player(title, scid, url, number) -%}
-	<div class="player" id="sc{{number}}">
-		<div class="title"><a href="/episodes/{{url}}">Episode {{number}}: {{title}}</a></div>
-		<img class="play-pause" src="/static/img/pause-play-button.svg" onclick="window.wavesurfer{{number}}.playPause()" />
+{% macro make_player(episode) -%}
+	<div class="player" id="sc{{episode.number}}">
+		<div class="title"><a href="/episodes/{{episode.url}}">Episode {{episode.number}}: {{episode.title}}</a></div>
+		<img class="play-pause fake" src="/static/img/pause-play-button.svg" onclick="load_real_player_{{episode.number}}();" />
+		<img class="play-pause real" src="/static/img/pause-play-button.svg" onclick="window.wavesurfer{{episode.number}}.playPause()" />
 		<div class="waveform"></div>
-		<div class="time"><span class="time-current">00:00</span> / <span class="time-total">00:00</span></div>
+		<div class="time"><span class="time-current">00:00</span> / <span class="time-total">{{episode.length}}</span></div>
 		<div class="loading">
 			<div class="loading-inner"></div>
 		</div>
-		<!-- Custom Player JS #sc{{number}} --> 
+		<!-- Custom Player JS #sc{{episode.number}} --> 
 		<script type="text/javascript">
-		document.addEventListener("DOMContentLoaded", function(event) { 
-  			window.wavesurfer{{number}} = WaveSurfer.create({container: '#sc{{number}} .waveform', waveColor: '#ABB7B7', progressColor: '#264348', cursorWidth: 0, barWidth: '4'}); 
-			window.wavesurfer{{number}}.load('https://api.soundcloud.com/tracks/{{scid}}/stream?consumer_key=htuiRd1JP11Ww0X72T1C3g');
+		function load_real_player_{{episode.number}}() {
+			window.ws{{episode.number}} = true;
+			var player = document.getElementById('sc{{episode.number}}');
+			player.getElementsByClassName('play-pause')[0].style.display = 'none';
+			player.getElementsByClassName('time')[0].style.display = 'none';
+			window.wavesurfer{{episode.number}}.load('https://api.soundcloud.com/tracks/{{episode.soundcloud}}/stream?consumer_key=htuiRd1JP11Ww0X72T1C3g');
+  		}
 
-			window.wavesurfer{{number}}.on('loading', function (percent) {
-				var player = document.getElementById('sc{{number}}');
-				player.getElementsByClassName('loading-inner')[0].style.width = percent + '%'
+		document.addEventListener("DOMContentLoaded", function(event) { 
+			window.ws{{episode.number}} = false;
+  			window.wavesurfer{{episode.number}} = WaveSurfer.create({container: '#sc{{episode.number}} .waveform', waveColor: '#ABB7B7', progressColor: '#264348', cursorWidth: 0, barWidth: '4'});
+
+			window.wavesurfer{{episode.number}}.load('/static/mp3/sound_02.mp3')
+
+			window.wavesurfer{{episode.number}}.on('loading', function (percent) {
+				var player = document.getElementById('sc{{episode.number}}');
+				player.getElementsByClassName('time')[0].style.display = 'none';
+				player.getElementsByClassName('loading')[0].style.display = 'inline-block';
+				player.getElementsByClassName('loading-inner')[0].style.width = percent + '%';
 			});
 			
-			window.wavesurfer{{number}}.on('ready', function () {
-				var player = document.getElementById('sc{{number}}');
+			window.wavesurfer{{episode.number}}.on('ready', function () {
+				var player = document.getElementById('sc{{episode.number}}');
 				player.getElementsByClassName('loading')[0].style.display = 'none';
-				player.getElementsByClassName('play-pause')[0].style.display = 'inline-block';
+				if (window.ws{{episode.number}}) {
+					player.getElementsByClassName('real')[0].style.display = 'inline-block';
+					player.getElementsByClassName('time-total')[0].innerHTML = moment().startOf('day').seconds(window.wavesurfer{{episode.number}}.getDuration()).format('mm:ss');
+					window.wavesurfer{{episode.number}}.playPause();
+				} else {
+					player.getElementsByClassName('fake')[0].style.display = 'inline-block';
+				}
 				player.getElementsByClassName('time')[0].style.display = 'block';
-				player.getElementsByClassName('time-total')[0].innerHTML = moment().startOf('day').seconds(window.wavesurfer{{number}}.getDuration()).format('mm:ss');
-
-				player.getElementsByClassName('time-current')[0].innerHTML = moment().startOf('day').seconds(window.wavesurfer{{number}}.getCurrentTime()).format('mm:ss');
 			});
 
-			window.wavesurfer{{number}}.on('pause', function () {
-				var player = document.getElementById('sc{{number}}');
-				player.getElementsByClassName('play-pause')[0].className = "play-pause"
+			window.wavesurfer{{episode.number}}.on('pause', function () {
+				var player = document.getElementById('sc{{episode.number}}');
+				player.getElementsByClassName('play-pause real')[0].className = "play-pause real";
 			});
 
-			window.wavesurfer{{number}}.on('audioprocess', function () {
-				var player = document.getElementById('sc{{number}}');
-				player.getElementsByClassName('time-current')[0].innerHTML = moment().startOf('day').seconds(window.wavesurfer{{number}}.getCurrentTime()).format('mm:ss');
-				player.getElementsByClassName('play-pause')[0].className = "play-pause playing"
+			window.wavesurfer{{episode.number}}.on('audioprocess', function () {
+				var player = document.getElementById('sc{{episode.number}}');
+				player.getElementsByClassName('time-current')[0].innerHTML = moment().startOf('day').seconds(window.wavesurfer{{episode.number}}.getCurrentTime()).format('mm:ss');
+				player.getElementsByClassName('play-pause real')[0].className = "play-pause real playing";
 			});
 		});	
 		</script>
