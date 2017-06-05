@@ -27,6 +27,10 @@ const fileManifest = [
     "revision": "e41941a8176a210eae8fedcb728a4a54"
   },
   {
+    "url": "/static/img/play-pause-button.svg",
+    "revision": "1"
+  },
+  {
     "url": "/static/js/ga.js",
     "revision": "3fe57bda29ce82a4ba3f1f67c70383ec"
   },
@@ -41,6 +45,10 @@ const fileManifest = [
   {
     "url": "/static/manifest.json",
     "revision": "05fa8390daacb9fcab1a17bd66976ab5"
+  },
+  {
+    "url": "/static/mp3/sound.mp3",
+    "revision": "1"
   }
 ];
 
