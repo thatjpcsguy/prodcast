@@ -1,0 +1,15 @@
+{% extends 'wrapper.html' %}
+{% include 'navigation.html' %}
+{% from 'wrapper.html' import make_player %}
+{% block content %}
+<div class="container">
+	<div class="episode-list">
+		{% for episode in episodes %}
+			<div class="episode-item">
+				{{ make_player(episodes[episode].title, episodes[episode].soundcloud, episode, episodes[episode].number) }}
+			</div>
+		{% endfor %}
+	</div>
+</div>
+
+{% endblock %}

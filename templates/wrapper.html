@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>The Prodcast | {{title}}</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta property="og:title" content="The Prodcast | {{title}}" />
+	<meta property="og:type" content="website" />
+	<meta property="og:image" content="https://www.theprodcast.com.au/static/img/og.png" />
+
+	<meta name="theme-color" content="#ABB7B7">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+	<link rel="apple-touch-icon-precomposed" sizes="1200x1200" href="/static/img/icon.png" />
+	<link rel="icon" type="image/png" href="/static/img/icon.png" />
+	<link rel="manifest" href="/static/manifest.json">
+
+	<style>{% include "css/prodcast.css" %}</style>
+</head>
+
+<body>
+	{% block content %}{% endblock %}
+	{% include 'footer.html' %}
+	<script>
+		if ('serviceWorker' in navigator) {
+			window.addEventListener('load', function() {
+				navigator.serviceWorker.register('/sw.js').then(function(registration) {
+					// Registration was successful
+					console.log('ServiceWorker registration successful with scope: ', registration.scope);
+					}, function(err) {
+					// registration failed :(
+					console.log('ServiceWorker registration failed: ', err);
+				});
+			});
+		}
+	</script>
+
+	<script src="/static/js/webfont.js" defer></script>
+	<script>
+		document.addEventListener("DOMContentLoaded", function(event) { 
+		  WebFont.load({
+		    google: {
+		      families: ['Barrio', 'Roboto']
+		    }
+		  });
+		});
+	</script>
+
+	<!-- Google Analytics -->
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','/static/js/ga.js','ga');
+
+	  ga('create', 'UA-100361822-1', 'auto');
+	  ga('send', 'pageview');
+
+	</script>
+	<!-- Wavesurfer -->
+	<script src="/static/js/wavesurfer.min.js" defer></script>
+	<!-- Moment JS -->
+	<script src="/static/js/moment.min.js" defer></script>
+</body>
+
+
+
+{% macro make_player(title, scid, url, number) -%}
+	<div class="player" id="sc{{number}}">
+		<div class="title"><a href="/episodes/{{url}}">Episode {{number}}: {{title}}</a></div>
+		<img class="play-pause" src="/static/img/pause-play-button.svg" onclick="window.wavesurfer{{number}}.playPause()" />
+		<div class="waveform"></div>
+		<div class="time"><span class="time-current">00:00</span> / <span class="time-total">00:00</span></div>
+		<!-- Custom Player JS #sc{{number}} --> 
+		<script type="text/javascript">
+		document.addEventListener("DOMContentLoaded", function(event) { 
+  			window.wavesurfer{{number}} = WaveSurfer.create({container: '#sc{{number}} .waveform', waveColor: '#ABB7B7', progressColor: '#264348', cursorWidth: 0, barWidth: '4'}); 
+			window.wavesurfer{{number}}.load('https://api.soundcloud.com/tracks/{{scid}}/stream?consumer_key=htuiRd1JP11Ww0X72T1C3g');
+			
+			window.wavesurfer{{number}}.on('ready', function () {
+				var player = document.getElementById('sc{{number}}');
+				player.getElementsByClassName('time-total')[0].innerHTML = moment().startOf('day').seconds(window.wavesurfer{{number}}.getDuration()).format('mm:ss');
+
+				player.getElementsByClassName('time-current')[0].innerHTML = moment().startOf('day').seconds(window.wavesurfer{{number}}.getCurrentTime()).format('mm:ss');
+			});
+
+			window.wavesurfer{{number}}.on('pause', function () {
+				var player = document.getElementById('sc{{number}}');
+				player.getElementsByClassName('play-pause')[0].className = "play-pause"
+			});
+
+			window.wavesurfer{{number}}.on('audioprocess', function () {
+				var player = document.getElementById('sc{{number}}');
+				player.getElementsByClassName('time-current')[0].innerHTML = moment().startOf('day').seconds(window.wavesurfer{{number}}.getCurrentTime()).format('mm:ss');
+				player.getElementsByClassName('play-pause')[0].className = "play-pause playing"
+			});
+		});	
+		</script>
+	</div>
+{%- endmacro %}
+</html>

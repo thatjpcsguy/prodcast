@@ -1,0 +1,22 @@
+{% extends 'wrapper.html' %}
+
+{% from 'wrapper.html' import make_player %}
+{% block content %}
+	<div class="hero">
+		<h1>
+			<small>Welcome To</small>
+			The Prodcast!
+		</h1>
+		<h2>by <a href="https://au.linkedin.com/in/jpcs1">James</a> &amp; <a href="https://au.linkedin.com/in/jamesthomasfrankel">James</a></h2>
+	</div>
+	<div class="container">
+		<div class="about">
+			<p>The Prodcast is a new podcast about all things product management, tech, startups, and whatever else takes our fancy. Listen to the <a href="/episodes/{{latest}}">latest episode</a> below. Or dont, whatever.</p>
+		</div>
+		<div class="latest">
+			{{ make_player(episodes[latest].title, episodes[latest].soundcloud, latest, episodes[latest].number) }}
+
+			<h3><a href="/episodes">See Past Episodes &rarr;</a></h3>
+		</div>
+	</div>
+{% endblock %}

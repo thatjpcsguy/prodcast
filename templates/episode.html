@@ -1,0 +1,15 @@
+{% extends 'wrapper.html' %}
+{% include 'navigation.html' %}
+
+{% from 'wrapper.html' import make_player %}
+{% block content %}
+<div class="container">
+	<div class="episode-list">
+		{{ make_player(episode.title, episode.soundcloud, episode.url, episode.number) }}
+	</div>
+	<div class="description">
+		{% block description %}{% endblock %}
+		<h3><a href="/episodes">See All Episodes &rarr;</a></h3>
+	</div>
+</div>
+{% endblock %}

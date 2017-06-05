@@ -1,0 +1,240 @@
+html, body, * {
+	padding: 0;
+	margin: 0;
+	border: 0;
+	font-family: 'Roboto', 'Arial';
+	text-decoration: none;
+	color: #264348; /* INDIGO COLOUR http://bootflat.github.io/color-picker.html */
+}
+
+html {
+	background-color: #ABB7B7; /* EDWARD http://bootflat.github.io/color-picker.html */
+}
+
+.container {
+	background-color: white;
+}
+
+.hero {
+	padding: 100px 20px;
+	height: auto;
+}
+
+.hero h1 {
+	font-size: 100px;
+	font-family: 'Barrio', 'Arial';
+	text-align: center;
+	padding-bottom: 0;
+	margin-bottom: 0;
+}
+
+.hero h2 {
+	font-family: 'Barrio', 'Arial';
+	text-align: center;
+	font-size: 30px;
+}
+
+.hero h2 a {
+	font-family: 'Barrio', 'Arial';
+	text-decoration: underline;
+}
+
+.hero h1 small {
+	font-family: 'Barrio', 'Arial';
+	font-size: 60px;
+	display: block;
+}
+
+.about {
+	width: 520px;
+	padding-top: 40px;
+	padding-bottom: 40px;
+	margin: 0 auto;
+	text-align: center;
+	font-size: 18px;
+}
+
+.about a {
+	text-decoration: underline;
+	line-height: 28px;
+	text-decoration-color: #ABB7B7; /* EDWARD http://bootflat.github.io/color-picker.html */
+}
+
+.latest {
+	width: 800px;
+	margin: 0 auto;
+	padding-bottom: 60px;
+}
+
+.latest h3 {
+	padding-top: 20px;
+	text-align: center;
+}
+
+.footer {
+	text-align: center;
+	padding-top: 12px;
+	padding-bottom: 20px;
+}
+
+.navigation {
+	padding: 20px 20px;
+	height: auto;
+	width: 800px;
+	text-align: left;
+	margin: 0 auto;
+}
+
+.navigation .hero h1 {
+	padding: 0;
+}
+
+.navigation .hero {
+	padding: 20px 40px;
+}
+
+.navigation a {
+	font-size: 30px;
+	font-family: 'Barrio', 'Arial';
+}
+
+.navigation h1 {
+	font-size: 50px;
+	font-family: 'Barrio', 'Arial';
+}
+
+.description {
+	width: 800px;
+	font-size: 18px;
+	margin: 0 auto;
+	padding: 60px 40px;
+	padding-top: 0;
+	line-height: 28px;
+}
+
+.description h3 {
+	padding-top: 20px;
+	text-align: center;
+}
+
+/* ALL THE STYLES FOR THE PLAYER */
+.player {
+	display: block;
+	padding-top: 40px;
+	margin-top: 20px;
+	margin-bottom: 40px;
+	width: 800px;
+}
+
+.player .waveform {
+	display: inline-block;
+	width: 740px;
+}
+
+.player .play-pause {
+	display: inline-block;
+	height: 50px;
+	padding-bottom: 40px;
+	width: 50px;
+}
+
+.player .play-pause.playing {
+	opacity: 0.8;
+}
+
+.player .time {
+	text-align: right;
+}
+
+.player button {
+	display: inline-block;
+}
+
+@media (max-width: 840px) {
+	.player .title {
+		position: relative;
+		top: 40px;
+		text-align: center;
+	}
+	.player .play-pause {
+		display: inline-block;
+		position: relative;
+		top: 90px;
+		padding-bottom: 0;
+		padding-top: 0;
+		z-index: 1000;
+		left: 10px;
+		-webkit-box-shadow: 0px 0px 10px 0px #264348;
+		-moz-box-shadow: 0px 0px 10px 0px #264348;
+		box-shadow: 0px 0px 10px 0px #264348;
+		border-radius: 51%;
+		background-color: white;
+	}
+	.player .waveform {
+		display: inline-block;
+		width: 100%;
+	}
+	.player {
+		width: auto;
+		margin: 0;
+		position: relative;
+		top: -40px;
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+}
+
+
+@media (max-width: 750px) {
+	.hero {
+		height: auto;
+		padding: 60px;
+	}
+	.hero h1 {
+		font-size: 80px;
+	}
+	.hero h1 small {
+		font-size: 50px;
+	}
+	.hero h2 {
+		font-size: 28px;
+	}
+	.navigation {
+		text-align: center;
+	}
+}
+
+@media (max-width: 580px) {
+	.hero {
+		height: auto;
+		padding: 40px;
+	}
+	.hero h1 {
+		font-size: 60px;
+	}
+	.hero h1 small {
+		font-size: 40px;
+	}
+	.hero h2 {
+		font-size: 24px;
+	}
+	.about {
+		width: auto;
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+}
+
+@media (max-width: 840px) {
+	.navigation .hero {
+		padding: 20px 0;
+	}
+	.latest, .navigation, .description {
+		width: auto;
+		margin: 0;
+	}
+	.description {
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+}
