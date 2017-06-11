@@ -1,6 +1,6 @@
 {% extends 'wrapper.html' %}
 
-{% from 'wrapper.html' import make_player %}
+{% from 'player.html' import player %}
 {% block content %}
 	<div class="hero">
 		<h1>
@@ -13,10 +13,16 @@
 		<div class="about">
 			<p>The Prodcast is a new podcast about all things product management, tech, startups, and whatever else takes our fancy. Listen to the <a href="/episodes/{{episode}}">latest episode</a> below. Or dont, whatever.</p>
 		</div>
-		<div class="latest">
-			{{ make_player(episodes[episode]) }}
+		<div class="latest episode">
+			{{ player(episodes[episode]) }}
 
-			<h3><a href="/episodes">See Past Episodes &rarr;</a></h3>
+			<h3><a href="/episodes">See More Episodes &rarr;</a></h3>
+		</div>
+		<div class="latest article">
+			<a href="/articles/{{articles[article].url}}"><h3>{{articles[article].title}}</h3></a>
+			<p>{{articles[article].description}} <a href="/articles/{{articles[article].url}}">Continue reading...</p>
+
+			<h3><a href="/articles">See More Articles &rarr;</a></h3>
 		</div>
 	</div>
 {% endblock %}

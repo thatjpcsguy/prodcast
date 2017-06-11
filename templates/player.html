@@ -1,0 +1,68 @@
+{% macro player(episode) -%}
+    <div class="player" id="sc{{episode.number}}">
+        <h3><a href="/episodes/{{episode.url}}">Episode {{episode.number}}: {{episode.title}}</a></h3>
+        <img class="play-pause" src="/static/img/pause-play-button.svg" onclick="window.wavesurfer{{episode.number}}.playPause()" />
+        <div class="waveform"></div>
+        <div class="time"><span class="time-current">00:00</span> / <span class="time-total">{{episode.length}}</span></div>
+
+        <script type="text/javascript">
+
+        document.addEventListener("DOMContentLoaded", function(event) { 
+            window.ws{{episode.number}} = true;
+            window.wavesurfer{{episode.number}} = WaveSurfer.create({container: '#sc{{episode.number}} .waveform', waveColor: '#ABB7B7', progressColor: '#264348', cursorWidth: 0, barWidth: '4', backend: 'MediaElement'});
+            
+            let url = '/static/mp3/{{episode.url}}.json';
+
+            fetch(url)
+            .then(res => res.json())
+            .then((out) => {
+                peaks = []
+
+                for (var i = 0; i < out.data.length; i++) {
+                    if (out.data[i] >= 0)
+                        peaks.push(out.data[i] / 100.0);
+                }
+                window.wavesurfer{{episode.number}}.load('/static/mp3/{{episode.url}}.mp3', peaks, 'none');
+                console.log('Checkout this JSON! ', peaks);
+            })
+            .catch(err => console.error(err));
+            
+            window.wavesurfer{{episode.number}}.on('ready', function () {
+                var player = document.getElementById('sc{{episode.number}}');
+
+                analytics.track("Player Ready", {
+                  episode: "{{episode.url}}", 
+                  url: "{{url}}"
+                });
+                
+                player.getElementsByClassName('play-pause')[0].style.display = 'inline-block';
+                player.getElementsByClassName('time')[0].style.display = 'block';
+            });
+
+            window.wavesurfer{{episode.number}}.on('pause', function () {
+                analytics.track("Player Paused", {
+                  episode: "{{episode.url}}", 
+                  url: "{{url}}",
+                  time: window.wavesurfer{{episode.number}}.getCurrentTime()
+                });
+                var player = document.getElementById('sc{{episode.number}}');
+                player.getElementsByClassName('play-pause')[0].className = "play-pause";
+            });
+
+            window.wavesurfer{{episode.number}}.on('play', function () {
+                analytics.track("Player Played", {
+                  episode: "{{episode.url}}", 
+                  url: "{{url}}",
+                  time: window.wavesurfer{{episode.number}}.getCurrentTime()
+                });
+            });
+
+            window.wavesurfer{{episode.number}}.on('audioprocess', function () {
+                var player = document.getElementById('sc{{episode.number}}');
+                player.getElementsByClassName('time-current')[0].innerHTML = moment().startOf('day').seconds(window.wavesurfer{{episode.number}}.getCurrentTime()).format('mm:ss');
+                player.getElementsByClassName('play-pause')[0].className = "play-pause playing";
+            });
+        }); 
+        </script>
+    </div>
+{%- endmacro %}

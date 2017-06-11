@@ -3,13 +3,21 @@ import json
 import os
 
 class Client:
-    def __init__(self):
-        self.host = "https://postal.cooperstanbury.com"
-        try:
+    def __init__(self, host=False, key=False):        
+        if 'POSTAL_HOST' in os.environ and not host:
+            self.host = os.environ['POSTAL_HOST']
+        elif host:
+            self.host = host
+        else:
+            print "Failed to get postal host from environ"
+
+        if 'POSTAL_KEY' in os.environ and not key:
             self.serverKey = os.environ['POSTAL_KEY']
-        except:
-            self.serverKey = ''
+        elif key:
+            self.key = key
+        else:
             print "Failed to get postal key from environ"
+
 
     def make_request(self, action, parameters):
         url = '%s/api/v1/send/%s' % (self.host, action)
@@ -21,6 +29,7 @@ class Client:
 
         response = requests.post(url, headers=headers, data=json.dumps(parameters))
         return response.json()
+
 
     def send_message(self, subject="", to_address=[], from_address="", headers=[], html="", text="", reply_to="", sender="", tag=""):
         attributes = {}        

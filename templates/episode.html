@@ -1,10 +1,10 @@
 {% extends 'wrapper.html' %}
 {% block content %}
 {% include 'navigation.html' %}
-{% from 'wrapper.html' import make_player %}
+{% from 'player.html' import player %}
 <div class="container">
 	<div class="latest">
-		{{ make_player(episodes[episode]) }}
+		{{ player(episodes[episode]) }}
 	</div>
 	<div class="description">
 		{% block description %}{% endblock %}

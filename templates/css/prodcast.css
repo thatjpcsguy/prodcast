@@ -54,6 +54,34 @@ html {
 	font-size: 18px;
 }
 
+article img {
+	width: 100%;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+article h2 {
+	padding-top: 40px;
+	padding-bottom: 20px;
+}
+
+article ul, article ol {
+	padding-top: 20px;
+	padding-bottom: 20px;
+	line-height: 30px;
+	padding-left: 40px;
+}
+
+article p {
+	padding-bottom: 10px;
+}
+
+article p:first-of-type {
+	font-size: 20px;
+	font-weight: bold;
+	padding-bottom: 50px;
+}
+
 .about a {
 	text-decoration: underline;
 	line-height: 28px;
@@ -69,6 +97,21 @@ html {
 .latest h3 {
 	padding-top: 20px;
 	text-align: center;
+}
+
+.latest {
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.latest .player {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+.latest h3 {
+	padding-bottom: 20px;
+	text-align: left;
 }
 
 .footer {
@@ -103,6 +146,7 @@ html {
 	font-family: 'Barrio', 'Arial';
 }
 
+
 .description {
 	width: 800px;
 	font-size: 18px;
@@ -116,6 +160,11 @@ html {
 	padding-top: 20px;
 	text-align: center;
 }
+
+.blog {
+	padding-top: 60px;
+}
+
 
 /* ALL THE STYLES FOR THE PLAYER */
 .player {
