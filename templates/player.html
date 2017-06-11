@@ -30,31 +30,31 @@
             window.wavesurfer{{episode.number}}.on('ready', function () {
                 var player = document.getElementById('sc{{episode.number}}');
 
-                // analytics.track("Player Ready", {
-                //   episode: "{{episode.url}}", 
-                //   url: "{{url}}"
-                // });
+                analytics.track("Player Ready", {
+                  episode: "{{episode.url}}", 
+                  url: "{{url}}"
+                });
                 
                 player.getElementsByClassName('play-pause')[0].style.display = 'inline-block';
                 player.getElementsByClassName('time')[0].style.display = 'block';
             });
 
             window.wavesurfer{{episode.number}}.on('pause', function () {
-                // analytics.track("Player Paused", {
-                //   episode: "{{episode.url}}", 
-                //   url: "{{url}}",
-                //   time: window.wavesurfer{{episode.number}}.getCurrentTime()
-                // });
+                analytics.track("Player Paused", {
+                  episode: "{{episode.url}}", 
+                  url: "{{url}}",
+                  time: window.wavesurfer{{episode.number}}.getCurrentTime()
+                });
                 var player = document.getElementById('sc{{episode.number}}');
                 player.getElementsByClassName('play-pause')[0].className = "play-pause";
             });
 
             window.wavesurfer{{episode.number}}.on('play', function () {
-                // analytics.track("Player Played", {
-                //   episode: "{{episode.url}}", 
-                //   url: "{{url}}",
-                //   time: window.wavesurfer{{episode.number}}.getCurrentTime()
-                // });
+                analytics.track("Player Played", {
+                  episode: "{{episode.url}}", 
+                  url: "{{url}}",
+                  time: window.wavesurfer{{episode.number}}.getCurrentTime()
+                });
             });
 
             window.wavesurfer{{episode.number}}.on('audioprocess', function () {
