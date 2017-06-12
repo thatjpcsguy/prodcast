@@ -2,8 +2,49 @@
     <div class="subscribe">
         <h3>Subscribe to never miss out on the action!</h3>
         <form>
-            <input type="email" name="email" placeholder="example@example.com">
-            <button>Subscribe!</button>
+            <input class="email-sub" type="email" name="email" placeholder="example@example.com">
+            <button class="email-sub-btn" onclick="save_email(); return false;">Subscribe!</button>
         </form>
     </div>
 </div>
+
+<script>
+
+function save_email() {
+
+    var email = document.getElementsByClassName('email-sub')[0].value;
+
+    document.getElementsByClassName('email-sub')[0].readOnly = true;
+    document.getElementsByClassName('email-sub-btn')[0].readOnly = true;
+    document.getElementsByClassName('email-sub-btn')[0].innerHTML = "Saving";
+
+    setTimeout(function() {document.getElementsByClassName('email-sub-btn')[0].innerHTML = "Saving.";}, 700);
+
+    setTimeout(function() {document.getElementsByClassName('email-sub-btn')[0].innerHTML = "Saving..";}, 1400);
+
+    setTimeout(function() {document.getElementsByClassName('email-sub-btn')[0].innerHTML = "Saving...";}, 2100);
+
+    setTimeout(function() {
+        document.getElementsByClassName('email-sub')[0].readOnly = false;
+        document.getElementsByClassName('email-sub')[0].value = '';
+        document.getElementsByClassName('email-sub-btn')[0].innerHTML = "Subscribe!";
+    }, 3000);
+    
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "/subscribe", true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+            console.log(xhr.responseText);
+        }
+    }
+
+    xhr.send(JSON.stringify({
+        email: email
+    }));
+}
+
+</script>
+

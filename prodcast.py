@@ -1,6 +1,12 @@
-from flask import Flask, render_template, abort, send_file, request
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+from flask import Flask, render_template, abort, send_file, request, jsonify
 import postal
+
+import sqlite3
 import os
+import time
 
 app = Flask(__name__)
 mail_client = postal.Client()
@@ -60,6 +66,23 @@ def view_article(name):
         title=articles[name]['title']
         )
 
+@app.route('/subscribe', methods=['POST'])
+def subscribe():
+    conn = sqlite3.connect('prodcast.db')
+    db = conn.cursor()
+    try:
+        sql = "INSERT INTO emails (email, time_added, ip, browser) VALUES(?, ?, ?, ?)"
+        db.execute(sql, (
+                request.get_json()['email'].encode('utf-8').strip(),
+                int(time.time()), 
+                request.remote_addr,
+                request.headers.get('User-Agent')
+            )
+        )
+        conn.commit()
+        return jsonify(success=True)
+    except:
+        return jsonify(success=False)
 
 @app.route('/sw.js')
 def service_worker():
