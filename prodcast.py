@@ -68,7 +68,7 @@ def view_article(name):
 
 @app.route('/subscribe', methods=['POST'])
 def subscribe():
-    conn = sqlite3.connect('prodcast.db')
+    conn = sqlite3.connect('../prodcast.db')
     db = conn.cursor()
     try:
         sql = "INSERT INTO emails (email, time_added, ip, browser) VALUES(?, ?, ?, ?)"
