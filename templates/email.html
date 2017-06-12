@@ -44,6 +44,10 @@ function save_email() {
     xhr.send(JSON.stringify({
         email: email
     }));
+
+    analytics.identify(email, {
+      email: email
+    });
 }
 
 </script>
