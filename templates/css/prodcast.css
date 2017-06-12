@@ -15,6 +15,10 @@ html {
 	background-color: white;
 }
 
+.container.dark {
+	background-color: #ABB7B7;
+}
+
 .hero {
 	padding: 100px 20px;
 	height: auto;
@@ -169,29 +173,43 @@ article p:first-of-type {
 /* ALL THE STYLES FOR THE PLAYER */
 .player {
 	display: block;
-	padding-top: 40px;
-	margin-top: 20px;
-	margin-bottom: 40px;
-	width: 800px;
-	height: 200px;
+	padding-top: 20px;
+	width: 100%;
+}
+
+.player .player-inner {
+	display: block;
+	padding-top: 10px;
+	width: 100%;
+	height: 80px;
 	overflow: none;
+	top: -40px;
 }
 
 .player .waveform {
 	display: inline-block;
-	width: 740px;
+	width: 100%;
+	position: relative;
+	top: -100px;
+
+	
 }
+
+.player button {
+	display: inline-block;
+}
+
 
 .player .play-pause {
-	/*display: inline-block;*/
 	height: 50px;
-	padding-bottom: 40px;
 	width: 50px;
 	display: none;
-}
-
-.player .play-pause.real {
-	display: none;
+	position: relative;
+	border-radius: 50%;
+	background-color: white;
+	z-index: 1000;
+	left: 5px;
+	top: -5px;
 }
 
 .player .play-pause.playing {
@@ -201,62 +219,85 @@ article p:first-of-type {
 .player .time {
 	text-align: right;
 	display: none;
-}
-
-.player button {
-	display: inline-block;
-}
-
-.player .loading {
 	position: relative;
-	display: inline-block;
-	width: 740px;
-	height: 80px;
-	top: -20px;
+	top: -128px;
 }
 
-.player .loading .loading-inner {
-	height: 10px;
-	background-color: #264348; /* INDIGO COLOUR http://bootflat.github.io/color-picker.html */
-	width: 0%;
+
+
+/* SUBSCRIBE FOR MORE */
+.subscribe {
+	text-align: center;
+	padding-top: 40px;
+	padding-bottom: 40px;
+}
+.subscribe form {
+	background-color: white;
+	width: 600px;
+	margin: 10px auto;
+	border-radius: 10px;
+	padding: 4px;
+	text-align: left;
+	font-size: 28px;
 }
 
-@media (max-width: 840px) {
-	.player .title {
-		position: relative;
-		top: 40px;
+.subscribe form input {
+	border-radius: 10px;
+	height: 50px;
+	width: 380px;
+	font-size: 22px;
+	padding-left: 8px;
+}
+
+.subscribe form button {
+	border-radius: 6px;
+	height: 50px;
+	padding: 10px;
+	width: 200px;
+	float: right;
+	font-size: 22px;
+	background-color: #D80027;
+	color: white;
+}
+
+@media (max-width: 620px) {
+	/* SUBSCRIBE FOR MORE */
+	
+	.subscribe {
+		width: auto;
+		padding-left: 10px;
+		padding-right: 10px;
+		display: block;
 		text-align: center;
 	}
-	.player .play-pause {
-		position: relative;
-		top: 94px;
-		padding-bottom: 0;
-		padding-top: 0;
-		z-index: 1000;
-		left: 10px;
-		-webkit-box-shadow: 0px 0px 10px 0px #264348;
-		-moz-box-shadow: 0px 0px 10px 0px #264348;
-		box-shadow: 0px 0px 10px 0px #264348;
-		border-radius: 51%;
-		background-color: white;
+
+	.subscribe h3 {
+		padding-bottom: 10px;
 	}
-	.player .waveform {
-		display: inline-block;
-		width: 100%;
-	}
-	.player .loading {
-		display: inline-block;
-		width: 100%;
-	}
-	.player {
+
+	.subscribe form {
 		width: auto;
-		margin: 0;
-		position: relative;
-		top: -40px;
-		padding-left: 20px;
-		padding-right: 20px;
+		height: auto;
+		height: 108px;
+		padding: 4px;
+	}
+
+	.subscribe form input {
+		display: block;
+		width: 100%;
+		padding-left: 0;
+		padding-right: 0;
+		text-align: center;
+	}
+
+	.subscribe form button {
+		margin-top: 8px;
+		display: block;
+		width: 100%;
+		float: none;
 	}
 }
+
 
 
 @media (max-width: 750px) {

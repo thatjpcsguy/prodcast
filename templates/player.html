@@ -1,15 +1,28 @@
 {% macro player(episode) -%}
     <div class="player" id="sc{{episode.number}}">
         <h3><a href="/episodes/{{episode.url}}">Episode {{episode.number}}: {{episode.title}}</a></h3>
-        <img class="play-pause" src="/static/img/pause-play-button.svg" onclick="window.wavesurfer{{episode.number}}.playPause()" />
-        <div class="waveform"></div>
-        <div class="time"><span class="time-current">00:00</span> / <span class="time-total">{{episode.length}}</span></div>
-
+        <div class="player-inner">
+            <img class="play-pause" src="/static/img/pause-play-button.svg" onclick="window.wavesurfer{{episode.number}}.playPause()" />
+            <div class="waveform"></div>
+            <div class="time"><span class="time-current">00:00</span> / <span class="time-total">{{episode.length}}</span></div>
+        </div>
         <script type="text/javascript">
 
-        document.addEventListener("DOMContentLoaded", function(event) { 
+        document.addEventListener("DOMContentLoaded", function(event) {
+
+            Object.defineProperty(Array.prototype, 'chunk_inefficient', {
+                    value: function(chunkSize) {
+                        var array=this;
+                        return [].concat.apply([],
+                            array.map(function(elem,i) {
+                                return i%chunkSize ? [] : [array.slice(i,i+chunkSize)];
+                            })
+                        );
+                    }
+                });
+
             window.ws{{episode.number}} = true;
-            window.wavesurfer{{episode.number}} = WaveSurfer.create({container: '#sc{{episode.number}} .waveform', waveColor: '#ABB7B7', progressColor: '#264348', cursorWidth: 0, barWidth: '4', backend: 'MediaElement'});
+            window.wavesurfer{{episode.number}} = WaveSurfer.create({container: '#sc{{episode.number}} .waveform', waveColor: '#ABB7B7', progressColor: '#264348', cursorWidth: 0, barWidth: '5', backend: 'MediaElement'});
             
             let url = '/static/mp3/{{episode.url}}.json';
 
@@ -22,8 +35,16 @@
                     if (out.data[i] >= 0)
                         peaks.push(out.data[i] / 100.0);
                 }
-                window.wavesurfer{{episode.number}}.load('/static/mp3/{{episode.url}}.mp3', peaks, 'none');
-                console.log('Checkout this JSON! ', peaks);
+
+                peaks_small = []
+                var x = peaks.chunk_inefficient(Math.floor(peaks.length / 200))
+                for (var i = 0; i < x.length; i++) {
+                    var avg = x[i].reduce(function(sum, a) { return sum + a },0)/(x[i].length||1);
+                    peaks_small.push(avg);
+                }
+
+
+                window.wavesurfer{{episode.number}}.load('/static/mp3/{{episode.url}}.mp3', peaks_small, 'none');
             })
             .catch(err => console.error(err));
             
