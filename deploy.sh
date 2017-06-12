@@ -4,6 +4,7 @@ cp -R config prodcast/.
 rm -rf *.pyc
 cp -R *.py prodcast/.
 cp -R static prodcast/.
+cp -R templates prodcast/.
 rm -rf prodcast/static/mp3
 
 zip -r -X prodcast.zip prodcast
