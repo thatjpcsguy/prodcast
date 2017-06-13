@@ -73,7 +73,7 @@ def subscribe():
     try:
         sql = "INSERT INTO emails (email, time_added, ip, browser) VALUES(?, ?, ?, ?)"
         db.execute(sql, (
-                request.get_json()['email'].encode('utf-8').strip(),
+                request.get_json()['email'].encode('utf-8').strip().lower(),
                 int(time.time()), 
                 request.remote_addr,
                 request.headers.get('User-Agent')
