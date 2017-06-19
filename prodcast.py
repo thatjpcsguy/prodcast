@@ -2,16 +2,18 @@
 # -*- coding: utf-8 -*-
 
 from flask import Flask, render_template, abort, send_file, request, jsonify
-import postal
+app = Flask(__name__)
+
+import boto3
+session = boto3.Session(profile_name='prodcast')
+client = session.client('ses')
 
 import sqlite3
 import os
 import time
 
-app = Flask(__name__)
-mail_client = postal.Client()
-
 from pages import episodes, articles, latest_episode, latest_article
+from email import send_mail
 
 
 @app.route('/')
@@ -66,23 +68,28 @@ def view_article(name):
         title=articles[name]['title']
         )
 
+
 @app.route('/subscribe', methods=['POST'])
 def subscribe():
     conn = sqlite3.connect('../prodcast.db')
     db = conn.cursor()
     try:
         sql = "INSERT INTO emails (email, time_added, ip, browser) VALUES(?, ?, ?, ?)"
+        email = request.get_json()['email'].encode('utf-8').strip().lower()
         db.execute(sql, (
-                request.get_json()['email'].encode('utf-8').strip().lower(),
+                email,
                 int(time.time()), 
                 request.remote_addr,
                 request.headers.get('User-Agent')
             )
         )
         conn.commit()
+        print send_email(email, 'Welcome to The Prodcast!', 'templates/emails/welcome.html')
+
         return jsonify(success=True)
     except:
         return jsonify(success=False)
+
 
 @app.route('/sw.js')
 def service_worker():
