@@ -130,19 +130,16 @@ article p:first-of-type {
 	width: 800px;
 	text-align: left;
 	margin: 0 auto;
+    overflow: hidden;
+
 }
 
-.navigation .hero h1 {
-	padding: 0;
-}
+.navigation-wrapper {
+	width: 100%;
+	padding: 20px 20px;
+	display: block;
+    background-color: #FF69B4;
 
-.navigation .hero {
-	padding: 20px 40px;
-}
-
-.navigation a {
-	font-size: 30px;
-	font-family: 'Barrio', 'Arial';
 }
 
 .navigation h1 {
@@ -150,6 +147,29 @@ article p:first-of-type {
 	font-family: 'Barrio', 'Arial';
 }
 
+.navigation a {
+	font-size: 30px;
+	font-family: 'Barrio', 'Arial';
+}
+
+.navigation a:hover {
+    color: #7FFFD4;
+}
+
+.hero h1 {
+	padding: 20px 20px;
+	height: auto;
+	width: 800px;
+	margin: 0 auto;
+	display: block;
+    overflow: hidden;
+   	text-align: center;
+
+}
+
+.hero  {
+	padding: 20px 40px;
+}
 
 .description {
 	width: 800px;
