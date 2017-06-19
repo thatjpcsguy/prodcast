@@ -4,7 +4,9 @@
 <div class="container">
 	<div class="blog description">
         <article>
+        {% include 'social.html' %}
 		{% block description %}{% endblock %}
+        {% include 'social.html' %}
         </article>
 		<h3><a href="/articles">See All Articles &rarr;</a></h3>
 	</div>

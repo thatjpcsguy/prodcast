@@ -6,9 +6,12 @@
 	<div class="latest">
 		{{ player(episodes[episode]) }}
 	</div>
-	<div class="description">
+	<article class="description">
+        {% include 'social.html' %}
 		{% block description %}{% endblock %}
 		<h3><a href="/episodes">See All Episodes &rarr;</a></h3>
-	</div>
+        {% include 'social.html' %}
+	</article>
+
 </div>
 {% endblock %}

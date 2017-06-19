@@ -224,6 +224,88 @@ article p:first-of-type {
 	top: -100px;
 }
 
+/* SOCIAL ICONS https://github.com/thatjpcsguy/jpcs-social */
+.jpcs-social-wrapper {
+	width: 800px;
+	margin: 0 auto;
+	text-align: center;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+.jpcs-social {
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	background-position: left;
+	background-size: contain;
+	background-color: #232323;
+	color: white;
+}
+
+.jpcs-social:hover {
+	background-color: white !important;
+	color: #232323;
+	cursor: pointer;
+}
+
+.jpcs-social.large {
+	width: 80px;
+	height: 80px;
+}
+
+.jpcs-social.dark {
+	background-color: #232323 !important;
+}
+.jpcs-social.dark:hover {
+	background-color: white !important;
+}
+
+.jpcs-social.facebook {background-image: url('/static/img/social/facebook-512.png'); background-color: #3B5998;} 
+.jpcs-social.facebook:hover {background-image: url('/static/img/social/facebook-512-black.png');} 
+
+.jpcs-social.twitter {background-image: url('/static/img/social/twitter-512.png'); background-color: #2C4762; background-color: #00ACED;} 
+.jpcs-social.twitter:hover {background-image: url('/static/img/social/twitter-512-black.png');} 
+
+.jpcs-social.googleplus {background-image: url('/static/img/social/googleplus-512.png'); background-color: #D14836;} 
+.jpcs-social.googleplus:hover {background-image: url('/static/img/social/googleplus-512-black.png');} 
+
+.jpcs-social.reddit {background-image: url('/static/img/social/reddit-512.png'); background-color: #CEE3F8; background-color: #FF4500;} 
+.jpcs-social.reddit:hover {background-image: url('/static/img/social/reddit-512-black.png');} 
+
+.jpcs-social.rss {background-image: url('/static/img/social/rss-512.png'); background-color: #FF8300;} 
+.jpcs-social.rss:hover {background-image: url('/static/img/social/rss-512-black.png');} 
+
+.jpcs-social.soundcloud {background-image: url('/static/img/social/soundcloud-512.png'); background-color: #FF6600;} 
+.jpcs-social.soundcloud:hover {background-image: url('/static/img/social/soundcloud-512-black.png');} 
+
+.jpcs-social.spotify {background-image: url('/static/img/social/spotify-512.png'); background-color: #80B719;} 
+.jpcs-social.spotify:hover {background-image: url('/static/img/social/spotify-512-black.png');} 
+
+.jpcs-social.youtube {background-image: url('/static/img/social/youtube-512.png'); background-color: #CD332D;} 
+.jpcs-social.youtube:hover {background-image: url('/static/img/social/youtube-512-black.png');} 
+
+.jpcs-social.linkedin {background-image: url('/static/img/social/linkedin-512.png'); background-color: #007FB1;} 
+.jpcs-social.linkedin:hover {background-image: url('/static/img/social/linkedin-512-black.png');} 
+
+.jpcs-social.apple {background-image: url('/static/img/social/apple-512.png'); background-color: #B9BFC1;} 
+.jpcs-social.apple:hover {background-image: url('/static/img/social/apple-512-black.png');} 
+
+.jpcs-social.email {background-image: url('/static/img/social/email-512.png'); background-color: #232323;} 
+.jpcs-social.email:hover {background-image: url('/static/img/social/email-512-black.png');} 
+
+.jpcs-social.github {background-image: url('/static/img/social/github-512.png'); background-color: #4183C4;} 
+.jpcs-social.github:hover {background-image: url('/static/img/social/github-512-black.png');} 
+
+.jpcs-social.hackernews {background-image: url('/static/img/social/hackernews-512.png'); background-color: #FF6600;} 
+.jpcs-social.hackernews:hover {background-image: url('/static/img/social/hackernews-512-black.png');} 
+
+.jpcs-social.instagram {background-image: url('/static/img/social/instagram-512.png'); background-color: #3F729B;} 
+.jpcs-social.instagram:hover {background-image: url('/static/img/social/instagram-512-black.png');} 
+
+
+
+
 
 
 /* SUBSCRIBE FOR MORE */
