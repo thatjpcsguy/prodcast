@@ -13,7 +13,7 @@ import os
 import time
 
 from pages import episodes, articles, latest_episode, latest_article
-from email import send_mail
+from mailutils import send_email
 
 
 @app.route('/')
