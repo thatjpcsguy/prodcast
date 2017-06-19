@@ -10,12 +10,14 @@ episodes = {
     }
 }
 
-latest_article = 'what-to-do-when-your-startup-needs-program-management'
+latest_article = 'lesson-focused-ab-testing'
+
 articles = {
-    'what-to-do-when-your-startup-needs-program-management': {
-        'title': 'What to do when your startup needs program management',
-        'author': 'Intercom',
-        'url': 'what-to-do-when-your-startup-needs-program-management',
-        'description': 'Shipping product is quick and easy when you\'re in a small startup, but what happens when you have a massive team with too many cooks in the kitchen or if there\'s one too many delays with product launches? Can your company handle such a situation?'
+    'lesson-focused-ab-testing': {
+        'title': 'Lesson focused AB testing',
+        'author': 'James Frankel',
+        'url': 'lesson-focused-ab-testing',
+        'description': 'The 3 main reasons for testing are and why the third is the most overlooked, yet usually the most useful of all'
     }
 }
+
