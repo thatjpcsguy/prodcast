@@ -2,15 +2,16 @@
 
 	<div class="navigation">
 		<span>
+			
+			<a href="/">Home</a>
 			<a href="/articles">Articles</a>
 			<a href="/episodes">Episodes</a>
 		 </span>
 	</div>
 
 </div>
-
-
-
+{% if title != "Home" %}
 <div class="hero">
 		<h1>{{title}}</h1>
 </div>
+{% endif %}

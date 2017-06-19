@@ -1,6 +1,8 @@
+{% macro social(title, description, url) -%}
 <div class="jpcs-social-wrapper">
-    <div class="jpcs-social facebook"></div>
-    <div class="jpcs-social twitter"></div>
-    <div class="jpcs-social linkedin"></div>
-    <div class="jpcs-social googleplus"></div>
+    <a target="blank" href="http://www.facebook.com/sharer.php?u={{url}}&p[title]={{title}}"><div class="jpcs-social facebook"></div></a>
+    <a target="blank" href="http://twitter.com/share?text={{description}}&url={{url}}"><div class="jpcs-social twitter"></div></a>
+    <a target="blank" href="http://www.linkedin.com/shareArticle?mini=true&url={{url}}&title={{title}}&summary={{description}}&source=theprodcast.io"><div class="jpcs-social linkedin"></div></a>
+    <a target="blank" href="https://plus.google.com/share?url={{url}}"><div class="jpcs-social googleplus"></div></a>
 </div>
+{%- endmacro %}

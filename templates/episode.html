@@ -2,15 +2,16 @@
 {% block content %}
 {% include 'navigation.html' %}
 {% from 'player.html' import player %}
+{% from 'social.html' import social %}
 <div class="container">
 	<div class="latest">
 		{{ player(episodes[episode]) }}
 	</div>
 	<article class="description">
-        {% include 'social.html' %}
+        {{ social(episodes[episode].title, "Check out the latest episode of The Prodcast!", 'https://theprodcast.io/episodes/' + episodes[episode].url) }}
 		{% block description %}{% endblock %}
 		<h3><a href="/episodes">See All Episodes &rarr;</a></h3>
-        {% include 'social.html' %}
+        {{ social(episodes[episode].title, "Check out the latest episode of The Prodcast!", 'https://theprodcast.io/episodes/' + episodes[episode].url) }}
 	</article>
 
 </div>

@@ -1,12 +1,13 @@
 {% extends 'wrapper.html' %}
 {% block content %}
 {% include 'navigation.html' %}
+{% from 'social.html' import social %}
 <div class="container">
 	<div class="blog description">
         <article>
-        {% include 'social.html' %}
+        {{ social(articles[article].title, "Check out the latest article on The Prodcast!", 'https://theprodcast.io/articles/' + articles[article].url) }}
 		{% block description %}{% endblock %}
-        {% include 'social.html' %}
+        {{ social(articles[article].title, "Check out the latest article on The Prodcast!", 'https://theprodcast.io/articles/' + articles[article].url) }}
         </article>
 		<h3><a href="/articles">See All Articles &rarr;</a></h3>
 	</div>
