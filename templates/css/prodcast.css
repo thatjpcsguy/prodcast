@@ -5,6 +5,7 @@ html, body, * {
 	font-family: 'Roboto', 'Arial';
 	text-decoration: none;
 	color: #264348; /* INDIGO COLOUR http://bootflat.github.io/color-picker.html */
+	font-weight: 300;
 }
 
 html {
