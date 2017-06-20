@@ -4,16 +4,12 @@
 from flask import Flask, render_template, abort, send_file, request, jsonify
 app = Flask(__name__)
 
-import boto3
-session = boto3.Session(profile_name='prodcast')
-client = session.client('ses')
-
 import sqlite3
 import os
 import time
 
 from pages import episodes, articles, latest_episode, latest_article
-from mailutils import send_email
+# from mailutils import send_email
 
 
 @app.route('/')
