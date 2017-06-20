@@ -80,11 +80,9 @@ article p {
 	padding-bottom: 10px;
 }
 
-article p:first-of-type {
-	font-size: 20px;
-	font-weight: bold;
-	padding-bottom: 50px;
-}
+
+strong { font-weight: bold; }
+
 
 .about a {
 	text-decoration: underline;
@@ -246,7 +244,7 @@ article p:first-of-type {
 
 /* SOCIAL ICONS https://github.com/thatjpcsguy/jpcs-social */
 .jpcs-social-wrapper {
-	width: 800px;
+	width: 100%;
 	margin: 0 auto;
 	text-align: center;
 	padding-top: 20px;

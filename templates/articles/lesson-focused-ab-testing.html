@@ -5,30 +5,30 @@
  <br>
 		<p>Nearly every self respecting startup and tech company out there is using AB testing in some shape or form to further their business. A basic understanding of AB testing is the process of showing your users variations of your product and assessing which one performs better. It has proven itself to be an incredibly effective and useful tool in tech although in itself is a broad topic. In this article I’m going to discuss what the 3 main reasons for testing are and why the third is the most overlooked, yet arguably the most useful of all.</p>
 
-		<p>There are three main reasons for AB testing</p>
+		<p><strong>There are three main reasons for AB testing</strong></p>
 
 <ol>
 	<li> 
-		<p>Statistical improvement. The majority of AB tests are purely aimed at making a statistical improvement, whether it be the number of people who download your app or the number of people that signup and enter their email address etc etc. On a side note as a general rule you should always define those metrics you’re trying to improve BEFORE starting the test although I’ll get into explaining why that’s a bad idea another time.</p>
+		<p><strong>Statistical improvement.</strong> The majority of AB tests are purely aimed at making a statistical improvement, whether it be the number of people who download your app or the number of people that signup and enter their email address etc etc. On a side note as a general rule you should always define those metrics you’re trying to improve BEFORE starting the test although I’ll get into explaining why that’s a bad idea another time.</p>
 	</li> 
 	<li> 
-		<p>Statistical health check. There are a number of occasions where you will AB test and hope to see no statistical differences between the control and variation. A common example of this maybe that you have decided to migrate your stack to make your codebase more scalable but expect to have no direct impact on any product metrics. So if we’re not expecting any change then what’s the point of testing? Because every engineer makes mistakes and ab testing your technical changes will at the very worst help you sleep and at best prevent you from making a catastrophic blunder.</p>
+		<p><strong>Statistical health check.</strong> There are a number of occasions where you will AB test and hope to see no statistical differences between the control and variation. A common example of this maybe that you have decided to migrate your stack to make your codebase more scalable but expect to have no direct impact on any product metrics. So if we’re not expecting any change then what’s the point of testing? Because every engineer makes mistakes and ab testing your technical changes will at the very worst help you sleep and at best prevent you from making a catastrophic blunder.</p>
 	</li> 
    	<li> 
-		To learn something. This is in my mind is the most significant benefit that can come out of an AB test. When you test to learn, even if all your metrics go to crap and it turns out your original hypothesis was completely misguided - you still have the opportunity to find out something invaluable from that failure and these lessons can be game changing. Lesson focused testing is not intuitive to most for the simple reason that it often comes at a sacrifice which I’ll get explain now.
+		<p><strong>To learn something.</strong> This is in my mind is the most significant benefit that can come out of an AB test. When you test to learn, even if all your metrics go to crap and it turns out your original hypothesis was completely misguided - you still have the opportunity to find out something invaluable from that failure and these lessons can be game changing. Lesson focused testing is not intuitive to most for the simple reason that it often comes at a sacrifice which I’ll get explain now.</p>
 	</li>
 </ol>
 
-		<p>What do we sacrifice to learn our lesson?</p>
+		<p><strong>What do we sacrifice to learn our lesson?</strong></p>
  
 		<p>Predominantly speed is what we sacrifice. Firstly let's make sure not to understate this as a sacrifice... one of the most important things for a startup or a product team to be is fast. All those cheesy sayings about failing fast and growing quickly are cheesy sayings because they’re undeniably true. Obviously every change to your product needs to approached on it’s own merits but as a general rule I would always sacrifice speed to learn something potentially invaluable.</p>
  
-		<p>What lesson might I look to learn?</p>
+		<p><strong>What lesson might I look to learn?</strong></p>
 		 
 		<p>There really is an infinite number of lessons to be learned about your product and users through testing. What you should look to learn will again really come down to the product and the driving metric but from a high level there are a couple of areas where everyone can look to learn.</p>
 <ul>
 	<li> 
-		<p>Resource allocation. As a product manager of the leader of a startup you will always have to balance distributing engineering resources between technical tasks and feature development and ab testing can be a great aid for that.</p>
+		<p><strong>Resource allocation.</strong> As a product manager of the leader of a startup you will always have to balance distributing engineering resources between technical tasks and feature development and ab testing can be a great aid for that.</p>
 		 
 		<p>Let's say you find a bug on your site that, if fixed, will make every page 5% faster to load… so you should just fix it right? Not if you want to learn something! Even if the fix is guaranteed to make some sort of improvement to your key metrics… knowing both exactly how much and which metrics will improve will allow you to far more effectively prioritise your engineering resources.</p>
 		 
@@ -37,7 +37,7 @@
 		<p>I will make a quick concession here. There are always going to be situations where you could make a change without AB testing it and still get a reasonable idea of the statistical impact based on the uplift or decline from the baseline. It will depend on how stable your baseline stats are leading up to the change and what other changes that may affect your stats are going on at the same time. All things considered nothing beats the concrete takeaway from running an AB test and being 100% sure of what you’ve learned.</p>
 	</li>
 	<li>
-		<p>User behavior. I’m going to explain this one through an example of a product that we all know and use, LinkedIn (disclaimer: the specifics here are purely hypothetical). Let’s pretend we’ve developed a hypothesis that the longer the bio is on a user's profile, the less likely the longer they are retained as a user of the site. Now there’s a few ways that we can find out if this is cause or effect, perhaps by imposing a character limit or by adding tooltip suggesting the user writes a longer bio. Once you have collected some data, before checking whether or not the retention rate is better or worse, we need to make sure that the average user's bio length is as intended different between test groups. If we see no difference in bio length than we know any impact the test has will likely not have been a cause of our original hypothesis. Now let's say that our change had the desired effect and average bio lengths are 20% longer in the test group, we can now take a look to see if it has had an actual effect on retention.</p> 
+		<p><strong>User behavior.</strong> I’m going to explain this one through an example of a product that we all know and use, LinkedIn (disclaimer: the specifics here are purely hypothetical). Let’s pretend we’ve developed a hypothesis that the longer the bio is on a user's profile, the less likely the longer they are retained as a user of the site. Now there’s a few ways that we can find out if this is cause or effect, perhaps by imposing a character limit or by adding tooltip suggesting the user writes a longer bio. Once you have collected some data, before checking whether or not the retention rate is better or worse, we need to make sure that the average user's bio length is as intended different between test groups. If we see no difference in bio length than we know any impact the test has will likely not have been a cause of our original hypothesis. Now let's say that our change had the desired effect and average bio lengths are 20% longer in the test group, we can now take a look to see if it has had an actual effect on retention.</p> 
 			
 		<p>The important thing here is regardless of whether or not our aim was to make the average bio lengths shorter or longer in the test, as long as there was an actual difference in average lengths, we can prove or disprove our hypothesis. If it turns out that we were right, this learning can be followed up by a series of tests aimed at encouraging users to write longer bios and make serious improvements in improving retention of our users!</p>
 	</li>
