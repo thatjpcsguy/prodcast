@@ -30,7 +30,7 @@ html {
 	padding: 0;
 	height: auto;
 	text-align: center;
-	padding-top: 20px;
+	padding-top: 100px;
 	padding-bottom: 40px;
 }
 
@@ -168,6 +168,9 @@ strong { font-weight: bold; }
     background-color: #ABB7B7;
     border-top: 4px solid #D80027;
     border-bottom: 1px solid white;
+    box-shadow: 0px 0px 10px #ABB7B7;
+    position: fixed;
+    z-index: 100000;
 }
 
 .navigation h1 {
