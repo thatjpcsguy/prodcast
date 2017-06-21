@@ -166,6 +166,7 @@ strong { font-weight: bold; }
 	padding: 0;
 	display: block;
     background-color: #ABB7B7;
+    border-top: 4px solid #D80027;
     border-bottom: 1px solid white;
 }
 
