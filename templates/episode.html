@@ -10,8 +10,9 @@
 	<article class="description">
         {{ social(episodes[episode].title, "Check out the latest episode of The Prodcast!", 'https://theprodcast.io/episodes/' + episodes[episode].url) }}
 		{% block description %}{% endblock %}
+		{{ social(episodes[episode].title, "Check out the latest episode of The Prodcast!", 'https://theprodcast.io/episodes/' + episodes[episode].url) }}
 		<h3><a href="/episodes">See All Episodes &rarr;</a></h3>
-        {{ social(episodes[episode].title, "Check out the latest episode of The Prodcast!", 'https://theprodcast.io/episodes/' + episodes[episode].url) }}
+        
 	</article>
 
 </div>

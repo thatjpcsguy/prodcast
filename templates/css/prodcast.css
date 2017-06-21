@@ -20,9 +20,29 @@ html {
 	background-color: #ABB7B7;
 }
 
+.hero-wrapper {
+	width: 800px;
+	margin: 0 auto;
+}
+
+
 .hero {
-	padding: 100px 20px;
+	padding: 0;
 	height: auto;
+	text-align: center;
+	padding-top: 20px;
+	padding-bottom: 40px;
+}
+
+.hero h1 {
+	padding: 20px 20px;
+	height: auto;
+	width: auto;
+	margin: 0 auto;
+	display: block;
+    overflow: hidden;
+   	text-align: center;
+
 }
 
 .hero h1 {
@@ -81,6 +101,14 @@ article p {
 	padding-bottom: 10px;
 }
 
+article hr {
+	height: 2px;
+	width: 75%;
+	margin: 0 auto;
+	background-color: #ABB7B7;
+	margin-top: 40px;
+	margin-bottom: 80px;
+}
 
 strong { font-weight: bold; }
 
@@ -124,7 +152,7 @@ strong { font-weight: bold; }
 }
 
 .navigation {
-	padding: 20px 20px;
+	padding: 20px 10px;
 	height: auto;
 	width: 800px;
 	text-align: left;
@@ -135,10 +163,10 @@ strong { font-weight: bold; }
 
 .navigation-wrapper {
 	width: 100%;
-	padding: 20px 20px;
+	padding: 0;
 	display: block;
-    background-color: #FF69B4;
-
+    background-color: #ABB7B7;
+    border-bottom: 1px solid white;
 }
 
 .navigation h1 {
@@ -149,26 +177,16 @@ strong { font-weight: bold; }
 .navigation a {
 	font-size: 30px;
 	font-family: 'Barrio', 'Arial';
+	padding-right: 10px;
+	padding-left: 10px
 }
+
 
 .navigation a:hover {
-    color: #7FFFD4;
+    color: #D80027;
 }
 
-.hero h1 {
-	padding: 20px 20px;
-	height: auto;
-	width: 800px;
-	margin: 0 auto;
-	display: block;
-    overflow: hidden;
-   	text-align: center;
 
-}
-
-.hero  {
-	padding: 20px 40px;
-}
 
 .description {
 	width: 800px;
@@ -403,10 +421,7 @@ strong { font-weight: bold; }
 
 
 @media (max-width: 750px) {
-	.hero {
-		height: auto;
-		padding: 60px;
-	}
+
 	.hero h1 {
 		font-size: 80px;
 	}
@@ -422,10 +437,10 @@ strong { font-weight: bold; }
 }
 
 @media (max-width: 580px) {
-	.hero {
-		height: auto;
-		padding: 40px;
+	.navigation a {
+		font-size: 20px;
 	}
+
 	.hero h1 {
 		font-size: 60px;
 	}
@@ -443,10 +458,7 @@ strong { font-weight: bold; }
 }
 
 @media (max-width: 840px) {
-	.navigation .hero {
-		padding: 20px 0;
-	}
-	.latest, .navigation, .description {
+	.latest, .navigation, .description, .hero, .hero-wrapper {
 		width: auto;
 		margin: 0;
 	}
